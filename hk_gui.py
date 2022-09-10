@@ -179,10 +179,25 @@ def save():
     unlockAllAbilites()
     allCharms()
 
-root = Tk()
-sv_ttk.set_theme("light")
-root.title("Hollow Knight Trainer")
+class Window(Frame):
+    def __init__(self, master=None):
+        Frame.__init__(self, master)
+        self.master = master
+        menu = Menu(self.master)
+        self.master.config(menu=menu)
+        editMenu = Menu(menu)
+        editMenu.add_command(label="Light Mode", command=self.L_mode)
+        editMenu.add_command(label="Dark Mode", command=self.D_mode)
+        menu.add_cascade(label="Theme", menu=editMenu)
+    def L_mode(self):
+        sv_ttk.set_theme("light")
+    def D_mode(self):
+        sv_ttk.set_theme("dark")
 
+root = Tk()
+app = Window(root)
+root.title("Hollow Knight Trainer")
+sv_ttk.set_theme("light")
 root.resizable = False
 
 loadProcessBtn = ttk.Button(text="Load Process", width=41, command=loadProcess, style="Accent.TButton")
