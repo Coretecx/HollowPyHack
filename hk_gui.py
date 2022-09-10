@@ -5,7 +5,8 @@ from pymem import Pymem
 from pymem.ptypes import RemotePointer
 from pymem import *
 from pymem.process import *
-                
+import sv_ttk
+
 def getPointerAddress(base, offsets):
     remote_pointer = RemotePointer(pm.process_handle, base)
     for offset in offsets:
@@ -16,6 +17,9 @@ def getPointerAddress(base, offsets):
 
 pm = Pymem("hollow_knight.exe")
 gameModule = module_from_name(pm.process_handle, "UnityPlayer.dll").lpBaseOfDll
+
+def none():
+    pass
 
 def loadProcess():
     gameModule = module_from_name(pm.process_handle, "UnityPlayer.dll").lpBaseOfDll
@@ -176,43 +180,51 @@ def save():
     allCharms()
 
 root = Tk()
+sv_ttk.set_theme("light")
 root.title("Hollow Knight Trainer")
 
 root.resizable = False
 
-loadProcessBtn = ttk.Button(text="Load Process", width=41, command=loadProcess)
+loadProcessBtn = ttk.Button(text="Load Process", width=41, command=loadProcess, style="Accent.TButton")
 loadProcessBtn.grid(column=0, row=0, pady=10, columnspan=2)
 
-labelframe = LabelFrame(root, text="Options", width=35, height=300)
-labelframe.grid(column=0, row=1, padx=20, columnspan=2)
+labelframe = ttk.LabelFrame(root, text="Options", width=35, height=300)
+labelframe.grid(column=0, row=1, padx=20,pady=10, columnspan=2)
 
-labelframe2 = LabelFrame(root, text="Misc.", width=35, height=300)
-labelframe2.grid(column=0, row=7, padx=20, columnspan=2)
+labelframe2 = ttk.LabelFrame(root, text="Misc.", width=35, height=300)
+labelframe2.grid(column=0, row=7, padx=20, pady=10, columnspan=2)
  
-geoLbl = Label(labelframe, text="Geo:")
+geoLbl = ttk.Label(labelframe, text="Geo:")
 geoLbl.grid(column=0, row=2, padx=10, sticky="w")
 
 geoEntry = ttk.Entry(labelframe, width=33, state="disabled")
 geoEntry.grid(column=1, row=2, padx=10, pady=10)
 
-
 infJumpStatus = tkinter.IntVar()
-infJumpCheck = Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Jump", variable=infJumpStatus)
-infJumpCheck.grid(column=0, row=4)
+infJumpCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Jump", variable=infJumpStatus)
+infJumpCheck.grid(column=0,padx=10, row=4)
 
 invincibilityStatus = tkinter.IntVar()
-invincibilityCheck = Checkbutton(labelframe2, state="disabled", width=35, text="Invincibility", variable=invincibilityStatus)
-invincibilityCheck.grid(column=0, row=5)
+invincibilityCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Invincibility", variable=invincibilityStatus)
+invincibilityCheck.grid(column=0,padx=10, row=5)
 
 abilityStatus = tkinter.IntVar()
-abilityCheck = Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Abilities", variable=abilityStatus)
-abilityCheck.grid(column=0, row=6)
+abilityCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Abilities", variable=abilityStatus)
+abilityCheck.grid(column=0,padx=10, row=6)
 
 infSoulStatus = tkinter.IntVar()
-infSoulCheck = Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Soul", variable=infSoulStatus)
-infSoulCheck.grid(column=0, row=7)
+infSoulCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Soul", variable=infSoulStatus)
+infSoulCheck.grid(column=0,padx=10, row=7)
+
+allCharmsStatus = tkinter.IntVar()
+allCharmsCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="All Charms", variable = allCharmsStatus)
+allCharmsCheck.grid(column=0,padx=10, row=8)
+
+noneStatus = tkinter.IntVar()
+noneCheck = ttk.Label(labelframe2,text="")
+noneCheck.grid(column=0,padx=10, row=9)
 
 saveBtn = ttk.Button(root, text="Save", state="disabled", command=save)
-saveBtn.grid(column=0, row=10, columnspan=2, pady=10)
+saveBtn.grid(column=0, row=13, columnspan=2, pady=10)
  
 root.mainloop()
