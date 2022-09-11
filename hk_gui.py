@@ -33,6 +33,7 @@ def loadProcess():
     invincibilityCheck['state'] = 'normal'
     abilityCheck['state'] = 'normal'
     mapCheck['state'] = 'normal'
+    stagCheck['state'] = 'normal'
     allCharmsCheck['state'] = 'normal'
 
 def infJump():
@@ -208,6 +209,7 @@ def unlockAllMaps():
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC38]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC3C]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC40]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28C]), 1)
         
     else:
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC10]), 0)
@@ -249,6 +251,44 @@ def unlockAllMaps():
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC3C]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC40]), 0)
 
+def unlockAllStagsTrams():
+    stagStausCheck = stagStatus.get()
+    if stagStausCheck == 1:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BC]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BD]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BE]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BF]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C0]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C1]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C2]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C3]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C4]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C5]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C6]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C7]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC50]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC51]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC54]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC58]), 1)
+        
+    else:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BC]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BD]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BE]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4BF]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C0]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C1]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C2]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C3]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C4]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C5]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C6]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x4C7]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC50]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC51]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC54]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC58]), 0)
+
 def save():
     new_geo = int(geoEntry.get())
     pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x1C4]), new_geo)
@@ -261,6 +301,7 @@ def save():
     #pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xBF3]), 1)
     unlockAllAbilites()
     unlockAllMaps()
+    unlockAllStagsTrams()
     allCharms()
 
 class Window(Frame):
@@ -323,9 +364,13 @@ allCharmsStatus = tkinter.IntVar()
 allCharmsCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Charms", variable = allCharmsStatus)
 allCharmsCheck.grid(column=0,padx=10, row=9)
 
+stagStatus = tkinter.IntVar()
+stagCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Stags & Trams", variable=stagStatus)
+stagCheck.grid(column=0,padx=10, row=10)
+
 noneStatus = tkinter.IntVar()
 noneCheck = ttk.Label(labelframe2,text="")
-noneCheck.grid(column=0,padx=10, row=10)
+noneCheck.grid(column=0,padx=10, row=11)
 
 saveBtn = ttk.Button(root, text="Save", state="disabled", command=save)
 saveBtn.grid(column=0, row=13, columnspan=2, pady=10)
