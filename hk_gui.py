@@ -361,15 +361,28 @@ root = Tk()
 app = Window(root)
 root.title("Hollow Knight Trainer")
 sv_ttk.set_theme("light")
+tabControl = ttk.Notebook(root)
 root.resizable = False
+tab1 = ttk.Frame(tabControl)
+tab2 = ttk.Frame(tabControl)
+tabControl.add(tab1, text ='General')
+tabControl.add(tab2, text ='Abilites')
+tabControl.grid(column=0, row=4)
 
-loadProcessBtn = ttk.Button(text="Load Process", width=41, command=loadProcess, style="Accent.TButton")
+loadProcessBtn = ttk.Button(tab1, text="Load Process", width=41, command=loadProcess, style="Accent.TButton")
 loadProcessBtn.grid(column=0, row=0, pady=10, columnspan=2)
 
-labelframe = ttk.LabelFrame(root, text="Options", width=35, height=300)
+labelframe = ttk.LabelFrame(tab1, text="Options", width=35, height=300)
 labelframe.grid(column=0, row=1, padx=20,pady=10, columnspan=2)
 
-labelframe2 = ttk.LabelFrame(root, text="Misc.", width=35, height=300)
+labelframe1 = ttk.LabelFrame(tab1, text="Hacks", width=35, height=300)
+labelframe1.grid(column=0, row=5, padx=20,pady=5, columnspan=2)
+
+noneStatus = tkinter.IntVar()
+noneCheck = ttk.Label(labelframe1,text="")
+noneCheck.grid(column=0,padx=10, row=7)
+
+labelframe2 = ttk.LabelFrame(tab2, text="Misc.", width=35, height=300)
 labelframe2.grid(column=0, row=7, padx=20, pady=10, columnspan=2)
  
 geoLbl = ttk.Label(labelframe, text="Geo:")
@@ -379,15 +392,15 @@ geoEntry = ttk.Entry(labelframe, width=33, state="disabled")
 geoEntry.grid(column=1, row=2, padx=10, pady=10)
 
 invincibilityStatus = tkinter.IntVar()
-invincibilityCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Invincibility", variable=invincibilityStatus)
+invincibilityCheck = ttk.Checkbutton(labelframe1, state="disabled", width=35, text="Invincibility", variable=invincibilityStatus)
 invincibilityCheck.grid(column=0,padx=10, row=4)
 
 infJumpStatus = tkinter.IntVar()
-infJumpCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Jump", variable=infJumpStatus)
+infJumpCheck = ttk.Checkbutton(labelframe1, state="disabled", width=35, text="Infinite Jump", variable=infJumpStatus)
 infJumpCheck.grid(column=0,padx=10, row=5)
 
 infSoulStatus = tkinter.IntVar()
-infSoulCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Infinite Soul", variable=infSoulStatus)
+infSoulCheck = ttk.Checkbutton(labelframe1, state="disabled", width=35, text="Infinite Soul", variable=infSoulStatus)
 infSoulCheck.grid(column=0,padx=10, row=6)
 
 abilityStatus = tkinter.IntVar()
@@ -416,5 +429,6 @@ noneCheck.grid(column=0,padx=10, row=12)
 
 saveBtn = ttk.Button(root, text="Save", state="disabled", command=save)
 saveBtn.grid(column=0, row=13, columnspan=2, pady=10)
+
  
 root.mainloop()
