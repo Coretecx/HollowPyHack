@@ -36,6 +36,7 @@ def loadProcess():
     keyCheck['state'] = 'normal'
     stagCheck['state'] = 'normal'
     allCharmsCheck['state'] = 'normal'
+    nailChosen['state'] = 'normal'
 
 def infJump():
     infJumpStatusCheck = infJumpStatus.get()
@@ -326,6 +327,11 @@ def unlockAllKeys():
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x296]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x2D8]), 0)
 
+def nailSelection():
+    nailCode = nailChosen.current()
+    pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x418]), nailCode)
+
+
 def save():
     new_geo = int(geoEntry.get())
     pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x1C4]), new_geo)
@@ -341,6 +347,7 @@ def save():
     unlockAllKeys()
     unlockAllStagsTrams()
     allCharms()
+    nailSelection()
 
 class Window(Frame):
     def __init__(self, master=None):
@@ -365,9 +372,23 @@ tabControl = ttk.Notebook(root)
 root.resizable = False
 tab1 = ttk.Frame(tabControl)
 tab2 = ttk.Frame(tabControl)
+tab3 = ttk.Frame(tabControl)
 tabControl.add(tab1, text ='General')
 tabControl.add(tab2, text ='Abilites')
+tabControl.add(tab3, text = "Nail")
 tabControl.grid(column=0, row=4)
+
+labelframe3 = ttk.LabelFrame(tab3, text="Nail", width=300, height=300)
+labelframe3.grid(column=0, row=5, padx=20,pady=5, columnspan=2)
+
+nailArtsFrame = ttk.LabelFrame(tab3, text="Nail Arts", width=300, height=200)
+nailArtsFrame.grid(column=0, row=6, padx=20, pady=5, columnspan=2)
+
+selectedNail = StringVar()
+nailLbl = ttk.Label(labelframe3, text="Nail:")
+nailLbl.grid(column=0, row=1, padx=10, pady=10)
+nailChosen = ttk.Combobox(labelframe3, textvariable=selectedNail, state="disabled", width=28, values=['Old Nail', 'Sharpened Nail', 'Channeled Nail', 'Coiled Nail', 'Pure Nail'])
+nailChosen.grid(column=1, row=1, padx=10, pady=10)
 
 loadProcessBtn = ttk.Button(tab1, text="Load Process", width=41, command=loadProcess, style="Accent.TButton")
 loadProcessBtn.grid(column=0, row=0, pady=10, columnspan=2)
@@ -422,6 +443,8 @@ keyCheck.grid(column=0,padx=10, row=10)
 stagStatus = tkinter.IntVar()
 stagCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Stags & Trams", variable=stagStatus)
 stagCheck.grid(column=0,padx=10, row=11)
+
+
 
 noneStatus = tkinter.IntVar()
 noneCheck = ttk.Label(labelframe2,text="")
