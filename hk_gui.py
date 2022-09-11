@@ -33,6 +33,7 @@ def loadProcess():
     invincibilityCheck['state'] = 'normal'
     abilityCheck['state'] = 'normal'
     mapCheck['state'] = 'normal'
+    keyCheck['state'] = 'normal'
     stagCheck['state'] = 'normal'
     allCharmsCheck['state'] = 'normal'
 
@@ -67,20 +68,28 @@ def invincibility():
 def unlockAllAbilites():
     abilityStausCheck = abilityStatus.get()
     if abilityStausCheck == 1:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x271]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x272]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x273]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x284]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x258]), 10)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x285]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x286]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x287]), 1)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x289]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x288]), 1)
         
     else:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x271]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x272]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x273]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x284]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x258]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x285]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x286]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x287]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x289]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x288]), 0)
         
 def allCharms():
     allCharmsStausCheck = allCharmsStatus.get()
@@ -289,6 +298,34 @@ def unlockAllStagsTrams():
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC54]), 0)
         pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xC58]), 0)
 
+def unlockAllKeys():
+    keyStausCheck = keyStatus.get()
+    if keyStausCheck == 1:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28D]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28E]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28F]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x290]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x291]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x292]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x293]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x294]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x295]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x296]), 1)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x2D8]), 1)
+        
+    else:
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28D]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28E]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x28F]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x290]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x291]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x292]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x293]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x294]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x295]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x296]), 0)
+        pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x2D8]), 0)
+
 def save():
     new_geo = int(geoEntry.get())
     pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0x1C4]), new_geo)
@@ -301,6 +338,7 @@ def save():
     #pm.write_int(getPointerAddress(gameModule+0x019B8900, offsets=[0x0, 0xD8, 0x268, 0xC8, 0xBF3]), 1)
     unlockAllAbilites()
     unlockAllMaps()
+    unlockAllKeys()
     unlockAllStagsTrams()
     allCharms()
 
@@ -364,13 +402,17 @@ allCharmsStatus = tkinter.IntVar()
 allCharmsCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Charms", variable = allCharmsStatus)
 allCharmsCheck.grid(column=0,padx=10, row=9)
 
+keyStatus = tkinter.IntVar()
+keyCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Keys", variable = keyStatus)
+keyCheck.grid(column=0,padx=10, row=10)
+
 stagStatus = tkinter.IntVar()
 stagCheck = ttk.Checkbutton(labelframe2, state="disabled", width=35, text="Unlock All Stags & Trams", variable=stagStatus)
-stagCheck.grid(column=0,padx=10, row=10)
+stagCheck.grid(column=0,padx=10, row=11)
 
 noneStatus = tkinter.IntVar()
 noneCheck = ttk.Label(labelframe2,text="")
-noneCheck.grid(column=0,padx=10, row=11)
+noneCheck.grid(column=0,padx=10, row=12)
 
 saveBtn = ttk.Button(root, text="Save", state="disabled", command=save)
 saveBtn.grid(column=0, row=13, columnspan=2, pady=10)
